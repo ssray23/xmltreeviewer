@@ -166,27 +166,33 @@ HTML_TEMPLATE = f"""
         button:hover {{ background-color: #0056b3; }}
         .error-message {{ color: #dc3545; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 10px 15px; border-radius: 4px; margin-top: 20px; white-space: pre-wrap; }}
         hr {{ border: none; border-top: 1px solid #dee2e6; margin: 30px 0; }}
-        /* --- XML Tree Styles --- */
-        .xml-tree {{ margin-top: 20px; padding-left: 0; overflow-x: auto; }}
-        .xml-tree ul {{ list-style-type: none; padding-left: 28px; margin-top: 5px; border-left: 1px dashed #adb5bd; }}
+        /* --- XML Tree Styles with Dynamic Scrollbars --- */
+        #xml-viewer {{ margin-top: 20px; overflow-x: auto; overflow-y: visible; max-width: 100%; position: relative; }}
+        .xml-tree {{ margin-top: 20px; padding-left: 0; min-width: 100%; display: inline-block; }}
+        .xml-tree ul {{ list-style-type: none; padding-left: 28px; margin-top: 5px; border-left: 1px dashed #adb5bd; min-width: max-content; }}
+        .xml-tree ul.collapsed {{ display: none; }}
         .xml-tree li {{ position: relative; margin-bottom: 5px; }}
         .xml-tree li::before {{ content: ""; position: absolute; top: 11px; left: -16px; width: 16px; height: 1px; background-color: #adb5bd; }}
         .xml-tree li:last-child > ul {{ border-left: none; }}
         .xml-tree li:last-child::after {{ content: ""; position: absolute; top: 11px; left: -16px; width: 1px; height: calc(50% - 11px); background-color: #ffffff; }}
-        .node-content {{ display: flex; align-items: center; flex-wrap: nowrap; cursor: default; min-height: 26px; padding-bottom: 2px; }}
+        .node-content {{ display: flex; align-items: center; flex-wrap: nowrap; cursor: default; min-height: 26px; padding-bottom: 2px; width: max-content; min-width: 100%; }}
         .toggle {{ display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 18px; height: 18px; cursor: pointer; margin-right: 8px; font-weight: bold; color: #8B0000; user-select: none; font-size: 12px; text-align: center; line-height: 1; transition: opacity 0.2s ease; }}
         .toggle.empty {{ opacity: 0.4; cursor: default; }}
         .toggle::before {{ content: '►'; display: inline-block; }}
         .toggle.expanded::before {{ content: '▼'; }}
         .tag-name {{ color: #ffffff; padding: 3px 10px; border-radius: 12px; font-weight: 700; /* <-- Use bold */ font-size: 0.9em; margin-right: 8px; display: inline-block; line-height: 1.3; white-space: nowrap; flex-shrink: 0; }}
         /* --- XML Specific Styles --- */
-        .attributes {{ margin-left: 5px; display: inline-flex; flex-wrap: nowrap; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex-shrink: 1; }}
-        .attribute {{ margin-right: 12px; font-size: 0.85em; display: inline-block; white-space: nowrap; }}
+        .attributes {{ margin-left: 5px; display: inline-flex; flex-wrap: nowrap; white-space: nowrap; flex-shrink: 0; }}
+        .attribute {{ margin-right: 12px; font-size: 0.85em; display: inline-block; white-space: nowrap; flex-shrink: 0; }}
         .attr-name {{ color: #6f42c1; /* Maybe use italic? font-style: italic; */ }}
         .attr-equals {{ color: #adb5bd; margin: 0 2px; }}
         .attr-value {{ color: #198754; font-style: normal; }}
-        .text-content {{ color: #5a6268; margin-left: 8px; font-style: italic; /* <-- Use italic */ word-break: break-word; background-color: #e9ecef; padding: 2px 6px; border-radius: 4px; display: inline-block; border: 1px solid #dee2e6; line-height: 1.4; white-space: normal; flex-shrink: 1; overflow-wrap: break-word; }}
-        .xml-tree ul.collapsed {{ display: none; }}
+        .text-content {{ color: #5a6268; margin-left: 8px; font-style: italic; /* <-- Use italic */ word-break: break-word; background-color: #e9ecef; padding: 2px 6px; border-radius: 4px; display: inline-block; border: 1px solid #dee2e6; line-height: 1.4; white-space: normal; flex-shrink: 1; overflow-wrap: break-word; max-width: none; }}
+        /* --- Scrollbar Styling --- */
+        #xml-viewer::-webkit-scrollbar {{ height: 12px; }}
+        #xml-viewer::-webkit-scrollbar-track {{ background: #f1f1f1; border-radius: 6px; }}
+        #xml-viewer::-webkit-scrollbar-thumb {{ background: #888; border-radius: 6px; }}
+        #xml-viewer::-webkit-scrollbar-thumb:hover {{ background: #555; }}
     </style>
 </head>
 <body>
