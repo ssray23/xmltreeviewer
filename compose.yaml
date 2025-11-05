@@ -1,0 +1,17 @@
+services:
+  python-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: python-app
+    restart: unless-stopped
+    init: true
+    # env_file: ./.env  # Uncomment if .env file exists
+    ports:
+      - "5000:5000"  # Exposes the app on port 5000 as per Dockerfile
+    # Add depends_on here if you add external services (e.g., databases)
+    # networks: [appnet]  # Uncomment if you add more services/networks
+
+# No external services (databases, caches, etc.) detected in the project files.
+# No volumes section needed as there are no persistent data requirements.
+# No networks section needed as there is only one service.

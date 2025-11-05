@@ -1,0 +1,52 @@
+# Python bytecode and cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.coverage
+
+# IDE/editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Version control
+.git/
+.gitignore
+.svn/
+.hg/
+
+# Environment and secrets
+.env*
+*.env
+*.pem
+*.key
+*.crt
+config.local.*
+*.local.yml
+
+# Development and build artifacts
+dist/
+build/
+out/
+tmp/
+temp/
+*.tmp
+.local/
+local/
+
+# Test and debug files
+test/
+tests/
+debug/
+*.log
+
+# Documentation and project files
+docs/
+*.md
+README*
+
+# Docker files
+Dockerfile*
+docker-compose*
